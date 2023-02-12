@@ -1,0 +1,55 @@
+@import '../../styles/variables.scss';
+
+.main {
+  @include flexRow(none, flex-start, flex-start);
+  @include wH(100vw, 100vh);
+  background-image: url('../../../public/images/plant-pink-cover.jpg');
+  background-size: 1920px;
+  background-repeat: no-repeat;
+
+  .mainLeft {
+    @include flexColumn(none, center, center);
+    @include wH(50%, 100vh);
+    padding: 300px;
+    background-color: rgba(255, 255, 255, 0.4);
+
+    .textBox {
+      @include flexColumn(none, center, center);
+      @include fontStyle(20px, 400, $pink);
+      width: 400px;
+      line-height: 34px;
+      margin-bottom: 60px;
+
+      p {
+        @include fontStyle(25px, 900, none);
+        margin: 20px;
+        background-color: transparent;
+      }
+
+      .highlight {
+        font-weight: 700;
+      }
+    }
+
+    p {
+      @include fontStyle(none, 400, $pink);
+      line-height: 2rem;
+    }
+
+    button {
+      @include btnReset($pink);
+      padding: 1rem;
+      width: 150px;
+      border-radius: 15px;
+      color: white;
+      font-weight: 700;
+
+      &:hover {
+        cursor: pointer;
+        background-color: white;
+        color: $pink;
+        transition: 0.3s;
+      }
+    }
+  }
+}

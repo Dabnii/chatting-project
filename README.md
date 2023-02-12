@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# <p align="center">🛋️ Private Counselling Chat project 💭</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">📆 2023.02.8 ~ </p>
 
-## Available Scripts
+### ⚒️ 사용 기술
 
-In the project directory, you can run:
+```
+React, Firebase, git, SASS, Figma
+```
 
-### `npm start`
+### ⚙️ 기능 구현 목록
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [x] 🙋‍♂️ 회원가입
+- [x] 🔐 로그인
+- [x] 📑 유저목록
+- [x] 📱 1:1 채팅
+- [ ] 👯‍♀️ 그룹 채팅
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### ✨ 팀 구성원
 
-### `npm test`
+- 개인 프로젝트
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+### 🌳 나를 성장하게 한 코드
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- `useContext`
+- useContext를 활용하여 네비게이션, 메인, 로그인 등 로그인 유무를 확인
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```javascript
+import { createContext, useEffect, useState } from 'react';
+import { auth } from '../pages/Firebase';
+import { onAuthStateChanged } from 'firebase/auth';
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+export const AuthContext = createContext();
 
-### `npm run eject`
+export const AuthContextProvider = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState({});
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, user => {
+      setCurrentUser(user);
+    });
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    return () => {
+      unsub();
+    };
+  }, []);
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+  return (
+    <AuthContext.Provider value={{ currentUser }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- `로그인한 유저 uid + 대화상대 uid` 일치하는 파일 불러오기
 
-## Learn More
+```javascript
+useEffect(() => {
+  const getMessages = async () => {
+    let unsub;
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    try {
+      unsub = onSnapshot(doc(db, 'chats', combinedId), doc => {
+        setMatchedMessages(doc.data());
+      });
+    } catch (error) {
+      console.log('Error fetching messages:', error);
+    } finally {
+      return () => {
+        if (unsub) {
+          unsub();
+        }
+      };
+    }
+  };
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  combinedId && getMessages();
+}, [combinedId]);
+```
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- `where(db, chats, == combinedId)`로 쿼리를 `get`시도 실패
+- `onSnapshot`으로 해결
+- 파이어베이스 문법이 익숙하지 않아, 많이 헤맨 파트다. 🥲

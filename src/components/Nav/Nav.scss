@@ -1,0 +1,43 @@
+@import '../../styles/variables.scss';
+
+.nav {
+  @include flexRow(none, space-between, center);
+  padding: 1.2rem 12rem;
+  width: 100vw;
+  background-color: rgb(255, 255, 255);
+  position: sticky;
+  top: 0;
+
+  button {
+    @include btnReset(transparent);
+    @include fontStyle(none, 400, $pink);
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  img {
+    width: 7rem;
+  }
+
+  ol {
+    @include flexRow(none, none, center);
+    @include fontStyle(14px, 900, $pink);
+    gap: 1rem;
+
+    li {
+      display: flex;
+      gap: 5px;
+
+      a {
+        @include fontStyle(14px, 400, $pink);
+      }
+
+      img {
+        @include wH(15px, 15px);
+        @include imgFrame;
+      }
+    }
+  }
+}

@@ -1,0 +1,49 @@
+$pink: #da5666;
+$white45: #f4f1ef;
+$chatBG: #ebe6e2;
+$border: #d9d9d9;
+$palePink: #f2d1d8;
+$pinkBG: #ffe9ed;
+$yellow: #ffdb5c;
+$FontFace: 'Poppins', 'gravesend-sans', sans-serif, 'Noto Sans KR';
+
+@mixin flexColumn($align-content, $justify-content, $align-items) {
+  display: flex;
+  flex-direction: column;
+  justify-content: $justify-content;
+  align-content: $align-content;
+  align-items: $align-items;
+}
+
+@mixin flexRow($align-content, $justify-content, $align-items) {
+  display: flex;
+  flex-direction: row;
+  justify-content: $justify-content;
+  align-content: $align-content;
+  align-items: $align-items;
+}
+
+@mixin wH($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin fontStyle($font-size, $font-weight, $color) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  color: $color;
+}
+
+@mixin btnReset($background-color) {
+  appearance: none;
+  border: none;
+  background-color: $background-color;
+}
+
+@mixin imgFrame {
+  border-radius: 50%;
+  background-color: white;
+  object-fit: cover;
+  object-position: center center;
+  overflow: hidden;
+}

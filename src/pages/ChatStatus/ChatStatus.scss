@@ -1,0 +1,33 @@
+@import '/src/styles/variables.scss';
+
+.chatStatus {
+  @include flexColumn(none, space-between, none);
+  width: 60rem;
+  height: 50rem;
+  position: relative;
+  background-color: $white45;
+
+  .chatInfo {
+    display: flex;
+    align-items: center;
+    @include wH(inherit, 90px);
+    border-bottom: 1px solid $border;
+
+    span {
+      padding: 20px;
+      @include fontStyle(20px, 500, $pink);
+    }
+  }
+}
+
+.chatChat {
+  overflow: scroll;
+
+  p {
+    @include fontStyle(20px, 600, $pink);
+    background-color: white;
+    width: fit-content;
+    height: fit-content;
+    padding: 5px;
+  }
+}

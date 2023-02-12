@@ -1,0 +1,94 @@
+@import '../../styles/variables.scss';
+
+.chatInput {
+  border-top: 2px solid $border;
+}
+
+.sendMenu {
+  @include flexRow(none, space-between, center);
+  @include wH(30rem, 5rem);
+
+  button {
+    border: none;
+    border-radius: 3px;
+  }
+}
+
+.preview {
+  @include flexColumn(none, none, center);
+  @include wH(200px, 200px);
+  border-radius: 10px;
+  background-color: white;
+  position: absolute;
+  bottom: 15%;
+  right: 5%;
+  overflow: hidden;
+
+  img {
+    @include wH(inherit, inherit);
+    object-fit: cover;
+  }
+
+  button {
+    @include btnReset(white);
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 10px;
+    @include wH(30px, 30px);
+    border-radius: 50%;
+
+    &:hover {
+      background-color: $yellow;
+    }
+  }
+}
+
+.sendMenu {
+  @include wH(inherit, none);
+  padding: 16px;
+
+  .chatBox {
+    @include wH(50rem, 3rem);
+    border-radius: 10px;
+    padding: 1rem;
+    overflow: scroll;
+    resize: none;
+    border: none;
+
+    &::placeholder {
+      color: red;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  label {
+    @include flexColumn(center, center, none);
+    @include wH(30px, 30px);
+    border-radius: 5px;
+    padding: 4px;
+    text-align: center;
+    background-color: white;
+  }
+  .fileInput {
+    display: none;
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    @include btnReset($yellow);
+    @include wH(70px, 30px);
+    padding: 4px;
+    border-radius: 5px;
+    @include fontStyle(none, 600, none);
+    img {
+      width: 25px;
+    }
+  }
+  .none {
+    display: none;
+  }
+}

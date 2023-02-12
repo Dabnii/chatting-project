@@ -1,0 +1,63 @@
+@import '../../styles/variables.scss';
+
+.chatComponent {
+  @include flexRow(none, center, none);
+  @include wH(100vw, fit-content);
+  position: relative;
+  background-image: url(../../../public/images/main2.jpg);
+
+  .chatContainer {
+    display: flex;
+    height: 50rem;
+    margin: 2rem 0;
+    border-radius: 10px;
+    overflow: hidden;
+
+    .chatLeftMenu {
+      @include flexColumn(none, none, none);
+      width: 360px;
+      border-right: 1px solid $border;
+      background-color: $chatBG;
+
+      .chatListTop {
+        @include flexColumn(flex-end, none, flex-end);
+        height: 90px;
+        padding: 16px;
+        border-bottom: 1px solid $border;
+
+        .chatUser {
+          display: flex;
+          align-items: center;
+          padding: 10px;
+          gap: 10px;
+
+          img {
+            @include wH(20px, 20px);
+            border-radius: 50%;
+          }
+
+          .userName {
+            @include fontStyle(20px, 700, $pink);
+          }
+        }
+        button {
+          @include btnReset(white);
+          @include wH(40px, 30px);
+          padding: 4px;
+          border: 1px solid $border;
+          border-radius: 5px;
+
+          &:hover {
+            background-color: $palePink;
+            transition: 0.3s;
+          }
+        }
+      }
+      .chatListWrapper {
+        width: inherit;
+        height: inherit;
+        overflow: scroll;
+      }
+    }
+  }
+}

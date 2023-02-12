@@ -1,0 +1,137 @@
+@import '../../styles/variables.scss';
+
+input {
+  @include wH(300px, 50px);
+  margin: 10px;
+  border: none;
+  border-bottom: 1px solid $border;
+  background-color: transparent;
+  font-family: $FontFace;
+  @include fontStyle(18px, 500, $pink);
+
+  &::placeholder {
+    @include fontStyle(12px, none, $palePink);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+p {
+  @include fontStyle(12px, none, $pink);
+  padding-left: 5px;
+  margin-top: 20px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.inputInfo {
+  @include fontStyle(12px, none, $pink);
+  background-color: white;
+  padding-left: 5px;
+  margin-top: 20px;
+}
+
+.signUp {
+  @include flexColumn(center, none, center);
+  font-family: $FontFace;
+  height: 100vh;
+  background-color: $pinkBG;
+
+  .signUpContainer {
+    @include flexColumn(none, none, none);
+    @include wH(600px, 800px);
+    border-radius: 20px;
+    margin-top: 30px;
+    background-color: white;
+
+    form {
+      @include flexColumn(center, space-evenly, center);
+      height: inherit;
+
+      .signupTitle {
+        @include fontStyle(60px, 900, $pink);
+        text-align: center;
+        outline: none;
+      }
+
+      .avatar {
+        @include flexColumn(none, none, none);
+        height: fit-content;
+        padding: 10px;
+
+        input {
+          display: none;
+        }
+
+        label {
+          @include flexColumn(none, none, center);
+          margin: 0;
+          gap: 10px;
+
+          p {
+            font-size: 12px;
+          }
+
+          &:hover {
+            cursor: pointer;
+          }
+
+          img {
+            @include imgFrame;
+            border: 3px solid $pink;
+            @include wH(50px, 50px);
+          }
+        }
+      }
+
+      .warning {
+        @include fontStyle(12px, 800, $pink);
+        padding: 4px;
+        border-radius: 10px;
+        background-color: $yellow;
+        text-align: center;
+      }
+
+      .passwordInput {
+        @include flexColumn(none, none, none);
+      }
+
+      .validAlert {
+        padding: 10px;
+        width: 50%;
+        border-radius: 10px;
+        background-color: $yellow;
+        text-align: center;
+      }
+
+      .submit {
+        width: 300px;
+        padding: 15px;
+        border: none;
+        border-radius: 50px;
+        background-color: $pink;
+        @include fontStyle(16px, 500, white);
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        &:disabled {
+          background-color: $palePink;
+        }
+      }
+
+      span {
+        color: $pink;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

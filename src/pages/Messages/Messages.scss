@@ -1,0 +1,93 @@
+@import '../../styles/variables.scss';
+
+.messages {
+  // background-color: grey;
+  @include wH(inherit, 600px);
+  overflow: scroll;
+
+  .sender {
+    padding: 25px;
+
+    .userProfile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .profile {
+        align-items: center;
+        @include wH(30px, 30px);
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      .id {
+        color: black;
+      }
+    }
+  }
+  .ctxContainer {
+    @include wH(320px, fit-content);
+
+    .text {
+      margin: 10px 0 10px 40px;
+      color: black;
+      @include fontStyle(18px, 600, black);
+      padding: 10px;
+      background-color: white;
+      width: fit-content;
+      border-radius: 0 5px 5px 5px;
+    }
+    .nullText {
+      display: hidden;
+    }
+    .attached {
+      @include wH(200px, auto);
+      border-radius: 5px;
+      margin: 10px 0 10px 40px;
+    }
+  }
+
+  .owner {
+    display: flex;
+    padding: 25px;
+    flex-direction: column;
+    align-content: flex-end;
+    align-items: flex-end;
+
+    .userProfile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .profile {
+        align-items: center;
+        @include wH(30px, 30px);
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      .id {
+        color: black;
+      }
+    }
+  }
+  .ctxContainer {
+    @include wH(320px, fit-content);
+
+    .text {
+      margin: 10px 0 10px 40px;
+      color: black;
+      @include fontStyle(18px, 600, black);
+      padding: 10px;
+      background-color: white;
+      width: fit-content;
+      border-radius: 0 5px 5px 5px;
+    }
+
+    .attached {
+      @include wH(200px, auto);
+      border-radius: 5px;
+      margin: 10px 0 10px 40px;
+    }
+  }
+}

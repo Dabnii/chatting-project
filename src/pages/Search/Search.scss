@@ -1,0 +1,33 @@
+@import '../../styles/variables.scss';
+
+.search {
+  input {
+    padding-left: 30px;
+    @include fontStyle(none, 900, $pink);
+  }
+  .searchResult {
+    @include wH(inherit, 70px);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 30px;
+    background-color: $palePink;
+
+    &:hover {
+      background-color: $palePink;
+    }
+
+    img {
+      @include wH(40px, 40px);
+      @include imgFrame;
+      display: flex;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid $pink;
+    }
+
+    span {
+      @include fontStyle(20px, 500, $pink);
+    }
+  }
+}
